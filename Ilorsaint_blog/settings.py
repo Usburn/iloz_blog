@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-(on^uyv(44%3iz9wd@6+viuok79wikb-)ymlwbuir4kq^kbwsp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG =  getenv("IS_PRODUCTION", True)    
 
-ALLOWED_HOSTS = [ "*"
+ALLOWED_HOSTS = [ "*", "iloz_blog.railway.internal"
 ]
 
 
