@@ -50,10 +50,29 @@ class Comment(models.Model):
         return f"{self.Last_name} {self.First_name}"
     
     
+
     
+    
+class Article(models.Model):
+    title= models.CharField(max_length=500)
+    slug = models.SlugField(unique=True)
+    authors = models.CharField(max_length= 700, null=True, blank=True)
+    DOI = models.CharField(max_length= 100)
+    url = models.CharField(max_length=500)
+    excerpt = models.TextField( max_length=300,  blank=True, help_text="Short summary of the article" )
+    content1 = models.TextField()
+    image1  = models.ImageField(upload_to="images", null=True, blank=True)
+    content2 = models.TextField(null=True, blank=True)
+    image2 = models.ImageField(upload_to="images", null=True, blank=True)
+    content3 = models.TextField(null=True, blank=True)
+    image3 = models.ImageField(upload_to="images", null=True, blank=True)
+    content4 = models.TextField(null=True, blank=True)
+    image4 = models.ImageField(upload_to="images", null=True, blank=True)
+    content5 = models.TextField(null=True, blank=True)
+    date = models.DateField(auto_now=True)
     
 
 
-    
+
     
   

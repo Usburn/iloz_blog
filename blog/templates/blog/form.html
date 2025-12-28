@@ -1,0 +1,47 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+
+
+{%block title%}  Zaro's projects {% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{%static "styles/base.css"%}">
+<link rel="stylesheet" href="{%static "styles/lectures.css"%}">
+{% endblock %}
+
+
+{%block content%} 
+
+
+<div class="main-part">
+
+    <h2>Who are you</h2>
+
+    <form action="{% url 'identification' %}" method = "post"> 
+
+        {% csrf_token %}
+
+           {{form}}
+
+        <button type = "submit"> Send </button>
+
+
+
+
+    </form>
+
+ 
+
+</div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

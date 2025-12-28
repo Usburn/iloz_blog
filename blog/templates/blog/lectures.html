@@ -1,0 +1,83 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+
+
+{%block title%}  Zaro's projects {% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{%static "styles/base.css"%}">
+<link rel="stylesheet" href="{%static "styles/lectures.css"%}">
+{% endblock %}
+
+
+{%block content%} 
+
+
+<div class="main-part">
+ <h1> Articles </h1>
+
+ {%for article in articles%}
+
+ <div class = "article">
+    <div class= "description">
+        <div class="title">
+     <h2>{{article.title}} </h2>
+       <div class = "text">
+        {{article.excerpt}}
+      </div>
+    </div>
+   
+
+        
+    </div>
+    
+
+    <div class="footer">
+
+         <p class = "DOI">  URL:  
+        {{article.DOI}}
+
+         </p>
+    
+
+      <p class = "author">
+        {{article.author}}
+      </p>
+
+
+
+
+
+       <div class="btn"> <a href="{%url 'lecture_details' article.slug%}"> <button>Read more...</button>  </a>  </div>   
+
+
+    </div>
+   
+
+ </div>
+ 
+
+
+
+
+
+
+ {% endfor %}
+
+    
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

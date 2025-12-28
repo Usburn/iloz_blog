@@ -1,0 +1,75 @@
+{% extends "blog/base.html" %}
+{% load static %}
+
+
+
+{%block title%}  {{selected_article.title}} {% endblock %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{%static "styles/base.css"%}">
+<link rel="stylesheet" href="{%static "styles/lecture_details.css"%}">
+{% endblock %}
+
+
+{%block content%} 
+
+
+<div class="main-part">
+ <h1> {{selected_article.title}} </h1>
+
+<div class="text">{{selected_article.content1}}</div> 
+
+{% if selected_article.image1 %}
+  <div class="image"> 
+    <img src="{{ selected_article.image1.url }}" class="my_image"> 
+  </div>
+{% endif %}
+
+{% if selected_article.content2 %}
+  <div class="text">{{ selected_article.content2 }}</div> 
+{% endif %}
+
+{% if selected_article.image2 %}
+  <div class="image"> 
+    <img src="{{ selected_article.image2.url }}" class="my_image"> 
+  </div>
+{% endif %}
+
+{% if selected_article.content3 %}
+  <div class="text">{{ selected_article.content3 }}</div> 
+{% endif %}
+
+{% if selected_article.image3 %}
+  <div class="image"> 
+    <img src="{{ selected_article.image3.url }}" class="my_image"> 
+  </div>
+{% endif %}
+
+{% if selected_article.content4 %}
+  <div class="text">{{ selected_article.content4 }}</div> 
+{% endif %}
+
+{% if selected_article.image4 %}
+  <div class="image"> 
+    <img src="{{ selected_article.image4.url }}" class="my_image"> 
+  </div>
+{% endif %}
+
+{% if selected_article.content5 %}
+  <div class="text">{{ selected_article.content5 }}</div> 
+{% endif %}
+
+
+<div class="btn"> <a href="{%url "lectures" %}"> <button>Back</button>  </a>  </div>   
+</div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

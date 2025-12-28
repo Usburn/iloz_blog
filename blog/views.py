@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from django.http import HttpResponse, HttpResponseRedirect
 
-from .models import Project
+from .models import Project, Article
+
+from .forms import Identification
 
 # Create your views here.
 
@@ -182,6 +184,8 @@ hypotheses were tested and verified using the “T-Student” statistical test w
 
 
 
+
+
 from django.views import View
 from django.views.generic.base import TemplateView
 
@@ -306,4 +310,41 @@ class SingleProjectView(DetailView):
     template_name = "blog/project_details.html"
     model = Project
 
+
+def lectures(request):
+
+    all_articles  = Article.objects.all()
     
+    return render(request, "blog/lectures.html",
+                  {
+                     "articles": all_articles 
+                  })
+
+    
+def lecture_details(request, slug):
+    selected_article = get_object_or_404(Article, slug=slug)
+
+    return render(request, "blog/lecture_details.html", {
+        "selected_article": selected_article
+    })
+
+
+from django.shortcuts import render
+from .forms import Identification
+
+def identification(request):
+    all_articles  = Article.objects.all()
+    if request.method == "POST":
+        form = Identification(request.POST)
+        if form.is_valid():
+            email_to_check = form.cleaned_data["email"]
+            password_to_check = form.cleaned_data["password"]
+
+            if email_to_check == "ilorsaintzaro@gmail.com" and password_to_check == "q":
+                return render(request, "blog/lectures.html", {"articles": all_articles})
+            else:
+                print("Invalid credentials")
+    else:
+        form = Identification()
+
+    return render(request, "blog/form.html", {"form": form})
