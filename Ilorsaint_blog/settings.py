@@ -29,8 +29,11 @@ SECRET_KEY = 'django-insecure-(on^uyv(44%3iz9wd@6+viuok79wikb-)ymlwbuir4kq^kbwsp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG =  getenv("IS_PRODUCTION", True)    
 
-ALLOWED_HOSTS = [ "*", "iloz_blog.railway.internal"
-]
+# Allowed hosts
+ALLOWED_HOSTS = ['ilozblog-production.up.railway.app', 'localhost', '127.0.0.1']
+
+# For CSRF
+CSRF_TRUSTED_ORIGINS = ['https://ilozblog-production.up.railway.app']
 
 
 # Application definition
